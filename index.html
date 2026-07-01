@@ -28,7 +28,8 @@
     --safe-b:env(safe-area-inset-bottom,0px);
   }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-  html,body{margin:0}
+  /* Disable the double-tap-to-zoom gesture (keeps pinch-zoom for accessibility). */
+  html,body{margin:0;touch-action:manipulation}
   body{
     font-family:'Outfit',system-ui,sans-serif;
     color:var(--cream);
