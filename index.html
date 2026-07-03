@@ -220,6 +220,63 @@
   .legend{display:flex;flex-wrap:wrap;gap:9px 14px;margin-top:13px;justify-content:center}
   .legend .li{display:flex;align-items:center;font-size:12.5px;color:var(--mute);font-weight:600;max-width:46%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
+  /* ---------- Game over / final standings ---------- */
+  .final{display:flex;flex-direction:column;gap:9px;margin-top:4px}
+  .frow{display:flex;align-items:center;gap:13px;padding:13px 15px;border-radius:var(--r);
+    border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.015))}
+  .frow.win{border-color:var(--gold);box-shadow:0 0 0 1px rgba(242,193,78,.22)}
+  .frow .rk{width:26px;flex:none;font-family:'Bricolage Grotesque';font-weight:800;font-size:15px;color:var(--mute);text-align:center}
+  .frow.win .rk{color:var(--gold)}
+  .frow .fn{flex:1;min-width:0;font-weight:700;font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .frow .fn .crown{color:var(--gold);margin-left:6px}
+  .frow .fp{font-family:'Bricolage Grotesque';font-weight:800;font-size:20px;font-variant-numeric:tabular-nums;color:var(--gold)}
+  .go-badge{display:flex;flex-direction:column;line-height:1}
+  .go-badge .k{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);font-weight:600}
+  .go-badge .v{font-family:'Bricolage Grotesque';font-weight:800;font-size:22px;color:var(--cream)}
+
+  /* ---------- Scoreboard ---------- */
+  .sb-head{display:flex;align-items:center;gap:12px;padding:20px 4px 14px}
+  .sb-head h1{font-size:24px;line-height:1;flex:1}
+  .sb-head h1 b{color:var(--gold)}
+  .back-btn{width:42px;height:42px;flex:none;border-radius:12px;background:rgba(255,255,255,.06);border:1px solid var(--line);font-size:20px;display:grid;place-items:center;color:var(--mute)}
+  .sb-empty{text-align:center;color:var(--mute);padding:44px 16px;font-weight:500;line-height:1.6}
+  .sb-empty .big{font-size:34px;display:block;margin-bottom:10px}
+  .stat-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:6px}
+  .stat-box{background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));border:1px solid var(--line);border-radius:13px;padding:13px 10px;text-align:center}
+  .stat-box .num{font-family:'Bricolage Grotesque';font-weight:800;font-size:22px;color:var(--gold);font-variant-numeric:tabular-nums}
+  .stat-box .lbl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);font-weight:600;margin-top:3px}
+  .sb-section{font-size:11px;text-transform:uppercase;letter-spacing:.16em;color:var(--gold);font-weight:600;margin:24px 2px 12px;display:flex;align-items:center;justify-content:space-between}
+  .lb-wrap{overflow-x:auto}
+  .lb{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+  .lb th{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute-2);font-weight:600;text-align:right;padding:0 0 10px 8px;white-space:nowrap}
+  .lb th.l,.lb td.l{text-align:left;padding-left:0}
+  .lb td{padding:10px 0 10px 8px;border-top:1px solid var(--line);font-size:14px;font-weight:600;text-align:right;color:var(--mute);white-space:nowrap}
+  .lb td.name{font-weight:700;color:var(--cream);text-align:left;padding-left:0}
+  .lb td.wins{color:var(--gold);font-weight:800}
+  .lb tr.top td.name{color:var(--gold)}
+  .lb .rk{color:var(--mute-2);font-weight:700;padding-right:8px}
+  .lb .medal{margin-right:5px}
+
+  .games-list{display:flex;flex-direction:column;gap:11px;margin-top:4px}
+  .gcard{border-radius:var(--r);border:1px solid var(--line);padding:14px 15px;
+    background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.015))}
+  .gcard .gtop{display:flex;align-items:center;gap:10px;margin-bottom:11px}
+  .gcard .win-name{font-family:'Bricolage Grotesque';font-weight:800;font-size:16px;color:var(--gold);flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .gcard .gmeta{font-size:11px;color:var(--mute);font-weight:500;text-align:right;flex:none}
+  .gcard .grow{display:flex;align-items:center;gap:8px;font-size:13.5px;padding:5px 0;font-variant-numeric:tabular-nums}
+  .gcard .grow .pn{color:var(--cream);font-weight:600;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .gcard .grow.w .pn{color:var(--gold)}
+  .gcard .grow .pt{color:var(--mute);font-weight:700}
+  .gcard .grow.w .pt{color:var(--gold)}
+  .del-game{background:none;border:none;color:var(--mute-2);font-size:15px;padding:2px 6px;flex:none}
+  .del-game:active{color:var(--coral)}
+  .clr-hist{background:none;border:none;color:var(--mute-2);font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:none}
+  .clr-hist:active{color:var(--coral)}
+  .sb-link{width:100%;margin-top:12px;padding:13px;border-radius:12px;font-weight:600;font-size:14px;
+    background:rgba(255,255,255,.05);border:1px solid var(--line);color:var(--cream);transition:.15s;
+    display:flex;align-items:center;justify-content:center;gap:8px}
+  .sb-link:active{transform:scale(.99)}
+
   @media (max-width:380px){
     .chip{font-size:15px}
     .grid-nums{gap:6px}
@@ -233,6 +290,7 @@
 "use strict";
 (function(){
   const KEY="flip7.v1";
+  const GKEY="flip7.games.v1";
   const MODS=[2,4,6,8,10];
   const NUMS=Array.from({length:13},(_,i)=>i); // 0..12
   // distinct line colors that read well on dark felt
@@ -241,15 +299,21 @@
 
   /* ---------- state ---------- */
   let state=load()||null;
+  let games=loadGames();
+  let ui={screen:null};   // "scoreboard" overlays the current game/setup
   let draft={names:["",""],target:200};
 
   function load(){
-    try{const s=JSON.parse(localStorage.getItem(KEY));if(!s||!s.players)return null;if(!s.history)s.history=[];return s;}catch(e){return null;}
+    try{const s=JSON.parse(localStorage.getItem(KEY));if(!s||!s.players)return null;if(!s.history)s.history=[];if(!s.done)s.done=false;return s;}catch(e){return null;}
   }
   function save(){
     if(state) localStorage.setItem(KEY,JSON.stringify(state));
     else localStorage.removeItem(KEY);
   }
+  function loadGames(){
+    try{const g=JSON.parse(localStorage.getItem(GKEY));return Array.isArray(g)?g:[];}catch(e){return [];}
+  }
+  function saveGames(){ localStorage.setItem(GKEY,JSON.stringify(games)); }
   function emptyHand(){return{numbers:[],modifiers:[],x2:false,busted:false};}
   function uid(){return"p"+Math.floor(performance.now()*1000).toString(36)+Math.floor((performance.now()%1)*1e6).toString(36)+(idc++);}
   let idc=0;
@@ -281,7 +345,8 @@
 
   function render(){
     const y=window.scrollY;
-    app.innerHTML = state ? gameView() : setupView();
+    app.innerHTML = ui.screen==="scoreboard" ? scoreboardView()
+                  : state ? gameView() : setupView();
     window.scrollTo(0,y);
   }
 
@@ -315,24 +380,17 @@
         </div>
         <button class="btn-primary" data-act="start" ${ready?"":"disabled"}>Deal me in →</button>
       </div>
+      ${games.length?`<button class="sb-link" data-act="scoreboard">📊 Scoreboard · ${games.length} game${games.length>1?"s":""} played</button>`:""}
       <p class="hint">Scores save automatically.<br/>Enter each player's kept cards after the round.</p>`;
   }
 
   /* ---------- Game ---------- */
   function gameView(){
-    const wIds=winners();
-    const won=wIds.length>0;
-    const players=state.players.map((p,i)=>pcard(p,i,wIds.includes(p.id))).join("");
-    let banner="";
-    if(won){
-      const names=state.players.filter(p=>wIds.includes(p.id)).map(p=>esc(p.name));
-      const isTie=names.length>1;
-      banner=`<div class="banner">
-        <span class="em">${isTie?"🤝":"🏆"}</span>
-        <h3>${isTie?"It's a tie!":`<span>${names[0]}</span> wins!`}</h3>
-        <p>${isTie?names.join(" & ")+" reached "+state.target:"First to "+state.target+" points"}</p>
-      </div>`;
-    }
+    return state.done ? gameOverView() : gameActiveView();
+  }
+
+  function gameActiveView(){
+    const players=state.players.map((p,i)=>pcard(p,i,false)).join("");
     return `
       <div class="ghead">
         <div class="round-badge">
@@ -340,10 +398,10 @@
           <span class="v">${state.round} <small>· to ${state.target}</small></span>
         </div>
         <div class="spacer"></div>
+        ${games.length?`<button class="menu-btn" data-act="scoreboard" aria-label="scoreboard">📊</button>`:""}
         <button class="menu-btn" data-act="newgame" aria-label="new game">⟳</button>
         <button class="end-round" data-act="endround">End round ↵</button>
       </div>
-      ${banner}
       <div class="players">${players}</div>
       ${renderChart()}
       <div class="foot">
@@ -351,6 +409,43 @@
         <button class="new" data-act="newgame">New game</button>
       </div>
       <p class="hint">Tap a player to enter the cards they kept.</p>`;
+  }
+
+  function gameOverView(){
+    const wIds=winners();
+    const names=state.players.filter(p=>wIds.includes(p.id)).map(p=>esc(p.name));
+    const isTie=names.length>1;
+    const banner=`<div class="banner">
+        <span class="em">${isTie?"🤝":"🏆"}</span>
+        <h3>${isTie?"It's a tie!":`<span>${names[0]}</span> wins!`}</h3>
+        <p>${isTie?names.join(" & ")+" reached "+state.target:"First to "+state.target+" points"}</p>
+      </div>`;
+    const ranked=[...state.players].sort((a,b)=>b.total-a.total);
+    const rows=ranked.map((p,i)=>{
+      const isWin=wIds.includes(p.id);
+      return `<div class="frow ${isWin?"win":""}">
+        <div class="rk">${i+1}</div>
+        <div class="fn">${esc(p.name)||"Player"}${isWin?'<span class="crown">♛</span>':""}</div>
+        <div class="fp">${p.total}</div>
+      </div>`;
+    }).join("");
+    return `
+      <div class="ghead">
+        <div class="go-badge">
+          <span class="k">Game over</span>
+          <span class="v">${state.history.length} round${state.history.length===1?"":"s"} · to ${state.target}</span>
+        </div>
+        <div class="spacer"></div>
+        <button class="menu-btn" data-act="scoreboard" aria-label="scoreboard">📊</button>
+      </div>
+      ${banner}
+      <div class="final">${rows}</div>
+      ${renderChart()}
+      <div class="foot">
+        <button data-act="scoreboard">📊 Scoreboard</button>
+        <button class="new" data-act="newgame">New game</button>
+      </div>
+      <p class="hint">This game is saved. Start a new game to play again.</p>`;
   }
 
   function pcard(p,idx,isWin){
@@ -473,6 +568,116 @@
     </div>`;
   }
 
+  /* ---------- statistics across finished games ---------- */
+  function computeStats(){
+    const byName=new Map();
+    const get=nm=>{
+      if(!byName.has(nm)) byName.set(nm,{name:nm,games:0,wins:0,totalPoints:0,bestGame:0,bestRound:0});
+      return byName.get(nm);
+    };
+    games.forEach(g=>{
+      const won=new Set(g.winners||[]);
+      (g.players||[]).forEach(pl=>{
+        const s=get(pl.name);
+        s.games++;
+        if(won.has(pl.name)) s.wins++;
+        s.totalPoints+=pl.total;
+        s.bestGame=Math.max(s.bestGame,pl.total);
+        let prev=0;
+        (g.history||[]).forEach(h=>{
+          const v=h.totals[pl.id];
+          if(v!=null){ s.bestRound=Math.max(s.bestRound,v-prev); prev=v; }
+        });
+      });
+    });
+    const arr=[...byName.values()].map(s=>({
+      ...s,
+      avg:s.games?Math.round(s.totalPoints/s.games):0,
+      winRate:s.games?Math.round(100*s.wins/s.games):0
+    }));
+    arr.sort((a,b)=> b.wins-a.wins || b.winRate-a.winRate || b.avg-a.avg || a.name.localeCompare(b.name));
+    return arr;
+  }
+
+  function fmtDate(ts){
+    try{
+      const d=new Date(ts);
+      return d.toLocaleDateString(undefined,{month:"short",day:"numeric"})+" · "+
+             d.toLocaleTimeString(undefined,{hour:"numeric",minute:"2-digit"});
+    }catch(e){ return ""; }
+  }
+
+  /* ---------- Scoreboard ---------- */
+  function scoreboardView(){
+    const head=`<div class="sb-head">
+      <button class="back-btn" data-act="back" aria-label="back">←</button>
+      <h1>Score<b>board</b></h1>
+    </div>`;
+
+    if(!games.length){
+      return head+`<div class="sb-empty">
+        <span class="big">🏆</span>
+        No finished games yet.<br/>Play a game to the target and it'll show up here.
+      </div>`;
+    }
+
+    const stats=computeStats();
+    const totalRounds=games.reduce((a,g)=>a+(g.history?g.history.length:0),0);
+    const bestRoundEver=stats.reduce((m,s)=>Math.max(m,s.bestRound),0);
+
+    const strip=`<div class="stat-strip">
+      <div class="stat-box"><div class="num">${games.length}</div><div class="lbl">Games</div></div>
+      <div class="stat-box"><div class="num">${totalRounds}</div><div class="lbl">Rounds</div></div>
+      <div class="stat-box"><div class="num">${bestRoundEver}</div><div class="lbl">Best round</div></div>
+    </div>`;
+
+    const medals=["🥇","🥈","🥉"];
+    const lbRows=stats.map((s,i)=>`
+      <tr class="${i===0?"top":""}">
+        <td class="name l">${i<3?`<span class="medal">${medals[i]}</span>`:`<span class="rk">${i+1}</span>`}${esc(s.name)}</td>
+        <td class="wins">${s.wins}</td>
+        <td>${s.games}</td>
+        <td>${s.winRate}%</td>
+        <td>${s.avg}</td>
+        <td>${s.bestGame}</td>
+      </tr>`).join("");
+    const leaderboard=`
+      <div class="sb-section">Leaderboard</div>
+      <div class="lb-wrap"><table class="lb">
+        <thead><tr>
+          <th class="l">Player</th><th>Wins</th><th>GP</th><th>Win%</th><th>Avg</th><th>Best</th>
+        </tr></thead>
+        <tbody>${lbRows}</tbody>
+      </table></div>`;
+
+    const gameCards=games.map(g=>{
+      const won=new Set(g.winners||[]);
+      const ranked=[...(g.players||[])].sort((a,b)=>b.total-a.total);
+      const rows=ranked.map(pl=>`
+        <div class="grow ${won.has(pl.name)?"w":""}">
+          <span class="pn">${won.has(pl.name)?"👑 ":""}${esc(pl.name)}</span>
+          <span class="pt">${pl.total}</span>
+        </div>`).join("");
+      const winTxt=(g.winners&&g.winners.length)
+        ? (g.winners.length>1?g.winners.map(esc).join(" & ")+" 🤝":esc(g.winners[0])+" 🏆")
+        : "—";
+      const rounds=g.history?g.history.length:(g.rounds||0);
+      return `<div class="gcard">
+        <div class="gtop">
+          <div class="win-name">${winTxt}</div>
+          <div class="gmeta">${fmtDate(g.date)}<br/>${rounds} rd · to ${g.target}</div>
+          <button class="del-game" data-act="delgame" data-id="${g.id}" aria-label="delete game">🗑</button>
+        </div>
+        ${rows}
+      </div>`;
+    }).join("");
+    const history=`
+      <div class="sb-section">Past games <button class="clr-hist" data-act="clearhistory">Clear all</button></div>
+      <div class="games-list">${gameCards}</div>`;
+
+    return head+strip+leaderboard+history+`<p class="hint">Stats are grouped by player name.</p>`;
+  }
+
   /* ============================================================ */
   /*  EVENTS                                                       */
   /* ============================================================ */
@@ -482,11 +687,19 @@
     const act=t.dataset.act, id=t.dataset.id;
     const p=id&&state?state.players.find(x=>x.id===id):null;
 
+    // block hand editing once the game is finished
+    if(state&&state.done&&["toggle","num","mod","x2","bust","clear","endround"].includes(act)) return;
+
     switch(act){
       // setup
       case"dadd": draft.names.push(""); render(); focusLast(); break;
       case"drm": draft.names.splice(+t.dataset.i,1); render(); break;
       case"start": startGame(); break;
+      // navigation
+      case"scoreboard": ui.screen="scoreboard"; render(); window.scrollTo(0,0); break;
+      case"back": ui.screen=null; render(); window.scrollTo(0,0); break;
+      case"delgame": deleteGame(id); break;
+      case"clearhistory": clearHistory(); break;
       // game toggles
       case"toggle":
         state.expandedPlayerId = state.expandedPlayerId===id?null:id; save(); render(); break;
@@ -546,6 +759,7 @@
   }
 
   function endRound(){
+    if(state.done) return;
     state.players.forEach(p=>{
       p.total+=scoreHand(p.hand);
       p.hand=emptyHand();
@@ -554,10 +768,43 @@
     const totals={};
     state.players.forEach(p=>{totals[p.id]=p.total;});
     state.history.push({round:state.round,totals});
-    state.round++;
     state.expandedPlayerId=null;
+    // someone reached the target → lock the game and archive it
+    if(winners().length){
+      state.done=true;
+      archiveGame();
+    }else{
+      state.round++;
+    }
     save(); render();
     window.scrollTo({top:0,behavior:"smooth"});
+  }
+
+  function archiveGame(){
+    const wIds=winners();
+    games.unshift({
+      id:uid(),
+      date:Date.now(),
+      target:state.target,
+      players:state.players.map(p=>({id:p.id,name:p.name,total:p.total})),
+      winners:state.players.filter(p=>wIds.includes(p.id)).map(p=>p.name),
+      history:state.history.map(h=>({round:h.round,totals:{...h.totals}}))
+    });
+    saveGames();
+  }
+
+  function deleteGame(gid){
+    if(!confirm("Delete this game from history?")) return;
+    games=games.filter(g=>g.id!==gid);
+    saveGames();
+    render(); // scoreboardView renders its own empty state when the list is gone
+  }
+
+  function clearHistory(){
+    if(!confirm("Clear all saved games and statistics? This can't be undone.")) return;
+    games=[];
+    saveGames();
+    render();
   }
 
   function addMidGame(){
@@ -569,10 +816,11 @@
   }
 
   function newGame(){
-    if(!confirm("Start a new game? Current scores will be cleared.")) return;
+    // an unfinished game would lose its progress; a finished one is already saved
+    if(state&&!state.done&&!confirm("Start a new game? The current game's progress will be lost.")) return;
     // seed setup draft from existing names for convenience
     if(state) draft={names:state.players.map(p=>p.name),target:state.target};
-    state=null; save(); render();
+    state=null; ui.screen=null; save(); render();
   }
 
   /* ---------- boot ---------- */

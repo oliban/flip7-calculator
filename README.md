@@ -10,6 +10,20 @@ target (default 200).
   and the **+15 Flip 7 bonus** for 7 numbers), or mark a player **busted** (0).
 - Auto-saves to `localStorage` — survives refreshes.
 
+## Finishing a game & scoreboard
+
+- As soon as a player reaches the win target after **End round**, the game
+  **locks** — no more rounds can be played, and the final standings are shown.
+- The finished game (final scores, winner, and the round-by-round history) is
+  archived to `localStorage` under a separate key.
+- A **📊 Scoreboard** (reachable from the setup screen and the game header)
+  shows:
+  - **Leaderboard** — every player ranked by wins, with games played, win rate,
+    average final score and best game total.
+  - **Past games** — each finished game with its winner, final scores, round
+    count and date; individual games can be deleted, or the whole history
+    cleared.
+
 ## Run locally
 
 Just open `index.html` in a browser, or serve the folder:
