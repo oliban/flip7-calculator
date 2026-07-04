@@ -277,6 +277,24 @@
     display:flex;align-items:center;justify-content:center;gap:8px}
   .sb-link:active{transform:scale(.99)}
 
+  /* ---------- header dropdown menu ---------- */
+  .hmenu{position:relative;flex:none}
+  .hmenu-btn{width:42px;height:42px;border-radius:12px;background:rgba(255,255,255,.06);
+    border:1px solid var(--line);font-size:18px;display:grid;place-items:center;color:var(--mute);transition:.12s}
+  .hmenu-btn:active{transform:scale(.94)}
+  .hmenu[data-open="1"] .hmenu-btn{background:rgba(242,193,78,.14);border-color:rgba(242,193,78,.4);color:var(--gold)}
+  .hmenu-backdrop{position:fixed;inset:0;z-index:45}
+  .hmenu-pop{position:absolute;top:48px;right:0;z-index:46;min-width:200px;
+    background:linear-gradient(180deg,#0f4a39,#0b3227);border:1px solid var(--line-strong);
+    border-radius:14px;padding:6px;box-shadow:0 18px 42px rgba(0,0,0,.55);
+    animation:pop .16s cubic-bezier(.2,.9,.3,1.2);transform-origin:top right}
+  .hmenu-item{display:flex;align-items:center;gap:12px;width:100%;padding:12px 12px;border-radius:9px;
+    font-weight:600;font-size:15px;color:var(--cream);text-align:left}
+  .hmenu-item:active{background:rgba(255,255,255,.08)}
+  .hmenu-item .ic{width:20px;text-align:center;font-size:16px;flex:none}
+  .hmenu-item.danger{color:var(--coral)}
+  .hmenu-sep{height:1px;background:var(--line);margin:5px 8px}
+
   @media (max-width:380px){
     .chip{font-size:15px}
     .grid-nums{gap:6px}
@@ -357,6 +375,29 @@
         <h1>Flip<b>7</b> Table</h1>
         <div class="sub">tap the cards · we'll do the math</div>
       </div>
+      <div class="spacer" style="flex:1"></div>
+      ${headerMenu()}
+    </div>`;
+  }
+
+  /* shared header dropdown menu, available on every screen */
+  function headerMenu(){
+    const items=[];
+    if(ui.screen==="scoreboard")
+      items.push(`<button class="hmenu-item" data-act="back"><span class="ic">←</span>Back</button>`);
+    else
+      items.push(`<button class="hmenu-item" data-act="scoreboard"><span class="ic">📊</span>Scoreboard</button>`);
+    if(state&&!state.done)
+      items.push(`<button class="hmenu-item" data-act="addmid"><span class="ic">＋</span>Add player</button>`);
+    if(state)
+      items.push(`<button class="hmenu-item danger" data-act="newgame"><span class="ic">⟳</span>New game</button>`);
+    const pop = ui.menuOpen
+      ? `<div class="hmenu-backdrop" data-act="menuclose"></div>
+         <div class="hmenu-pop" role="menu">${items.join(`<div class="hmenu-sep"></div>`)}</div>`
+      : "";
+    return `<div class="hmenu" data-open="${ui.menuOpen?1:0}">
+      <button class="hmenu-btn" data-act="menu" aria-haspopup="true" aria-expanded="${ui.menuOpen?"true":"false"}" aria-label="menu">☰</button>
+      ${pop}
     </div>`;
   }
 
@@ -380,7 +421,7 @@
         </div>
         <button class="btn-primary" data-act="start" ${ready?"":"disabled"}>Deal me in →</button>
       </div>
-      ${games.length?`<button class="sb-link" data-act="scoreboard">📊 Scoreboard · ${games.length} game${games.length>1?"s":""} played</button>`:""}
+      <button class="sb-link" data-act="scoreboard">📊 Scoreboard${games.length?` · ${games.length} game${games.length>1?"s":""} played`:""}</button>
       <p class="hint">Scores save automatically.<br/>Enter each player's kept cards after the round.</p>`;
   }
 
@@ -398,8 +439,7 @@
           <span class="v">${state.round} <small>· to ${state.target}</small></span>
         </div>
         <div class="spacer"></div>
-        ${games.length?`<button class="menu-btn" data-act="scoreboard" aria-label="scoreboard">📊</button>`:""}
-        <button class="menu-btn" data-act="newgame" aria-label="new game">⟳</button>
+        ${headerMenu()}
         <button class="end-round" data-act="endround">End round ↵</button>
       </div>
       <div class="players">${players}</div>
@@ -436,7 +476,7 @@
           <span class="v">${state.history.length} round${state.history.length===1?"":"s"} · to ${state.target}</span>
         </div>
         <div class="spacer"></div>
-        <button class="menu-btn" data-act="scoreboard" aria-label="scoreboard">📊</button>
+        ${headerMenu()}
       </div>
       ${banner}
       <div class="final">${rows}</div>
@@ -612,6 +652,7 @@
     const head=`<div class="sb-head">
       <button class="back-btn" data-act="back" aria-label="back">←</button>
       <h1>Score<b>board</b></h1>
+      ${headerMenu()}
     </div>`;
 
     if(!games.length){
@@ -686,6 +727,11 @@
     if(!t) return;
     const act=t.dataset.act, id=t.dataset.id;
     const p=id&&state?state.players.find(x=>x.id===id):null;
+
+    // header dropdown menu
+    if(act==="menu"){ ui.menuOpen=!ui.menuOpen; render(); return; }
+    if(act==="menuclose"){ ui.menuOpen=false; render(); return; }
+    ui.menuOpen=false; // any other action dismisses an open menu (handlers re-render)
 
     // block hand editing once the game is finished
     if(state&&state.done&&["toggle","num","mod","x2","bust","clear","endround"].includes(act)) return;
