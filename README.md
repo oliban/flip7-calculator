@@ -1,5 +1,9 @@
 # Flip 7 · Score Table
 
+[![Deploy to Fly.io](https://github.com/oliban/flip7-calculator/actions/workflows/deploy.yml/badge.svg)](https://github.com/oliban/flip7-calculator/actions/workflows/deploy.yml)
+
+**Live:** https://flip7-calculator.fly.dev
+
 A mobile-first webapp that calculates per-round scores for the card game
 **Flip 7** and tracks running totals across rounds until a player reaches the win
 target (default 200).
